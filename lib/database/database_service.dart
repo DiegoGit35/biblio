@@ -1,11 +1,11 @@
-import 'package:flutter/widgets.dart';
+import 'package:biblio/database/biblioteca_db.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart'
+import 'package:path/path.dart';
 
-class DatabaseService{
+class DatabaseService {
   Database? _database;
 
-  Future<Database> get database async{
+  Future<Database> get database async {
     if (_database != null) {
       return _database!;
     }
@@ -31,5 +31,5 @@ class DatabaseService{
   }
 
   Future<void> create(Database database, int version) async =>
-    await BibliotecaDB().createTable(database);
+      await BibliotecaDB().createTable(database);
 }
