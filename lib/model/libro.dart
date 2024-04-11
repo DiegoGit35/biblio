@@ -1,13 +1,8 @@
 class Libro {
-  final String idEjemplar,
-      editorial,
-      titulo,
-      estadoFisico,
-      disponibilidad,
-      autores;
+  String idEjemplar, editorial, titulo, estadoFisico, disponibilidad, autores;
   final String? fechaRegistro, fechaBaja;
-  final int isbn, anio;
-  final int idLibro;
+  int isbn, anio;
+  int idLibro;
 
   Libro({
     required this.idLibro,

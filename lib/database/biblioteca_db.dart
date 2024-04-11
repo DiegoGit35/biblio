@@ -22,7 +22,7 @@ class BibliotecaDB {
   }
 
   Future<int> create(
-      {required String idLibro,
+      {required int idLibro,
       required String idEjemplar,
       required int anio,
       required String titulo,
@@ -31,7 +31,7 @@ class BibliotecaDB {
       required String disponibilidad,
       required String autores,
       required int isbn,
-      required String fechaRegistro}) async {
+      required String? fechaRegistro}) async {
     final database = await DatabaseService().database;
     return await database.rawInsert(
       '''INSERT INTO $tableName(id_libro, id_ejemplar, anio, titulo, editorial, estado_fisico, disponibilidad, fecha_registro, autores, isbn, fecha_baja) VALUES (?, ?, ?, ?, ?, ?, ?)''',
@@ -56,10 +56,10 @@ class BibliotecaDB {
     return libros.map((libro) => Libro.fromSqfliteDatabase(libro)).toList();
   }
 
-  Future<Libro> fetchById(int id_libro) async {
+  Future<Libro> fetchById(int idLibro) async {
     final database = await DatabaseService().database;
     final libro = await database
-        .rawQuery('''SELECT * FROM $tableName WHERE id = ?''', [id_libro]);
+        .rawQuery('''SELECT * FROM $tableName WHERE id_libro = ?''', [idLibro]);
     return Libro.fromSqfliteDatabase(libro.first);
   }
 
@@ -79,6 +79,7 @@ class BibliotecaDB {
 
   Future<void> delete(int id) async {
     final database = await DatabaseService().database;
-    await database.rawDelete('''DELETE FROM $tableName WHERE id = ?''', [id]);
+    await database
+        .rawDelete('''DELETE FROM $tableName WHERE id_libro = ?''', [id]);
   }
 }
