@@ -6,5 +6,5 @@ class ItemLibroEnPrestamo {
       fechaDevolucion,
       fechaBaja;
 
-  ItemLibroEnPrestamo(this.idLibro, this.idPrestamo)
+  ItemLibroEnPrestamo(this.idLibro, this.idPrestamo);
 }

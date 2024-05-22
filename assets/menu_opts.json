@@ -1,0 +1,15 @@
+{
+    "nombreApp" : "booker",
+    "rutas" : [
+        {
+            "ruta" : "altaLibro",
+            "icon" : "",
+            "texto" : "Alta Libro"
+        },
+        {
+            "ruta" : "modificarLibro",
+            "icon" : "",
+            "texto" : "Modificar Libro"
+        }
+    ]
+}
