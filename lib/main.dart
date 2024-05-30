@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'features/administrar_libros/presentation/page/home.dart';
+import 'package:biblio/config/routes/routes.dart';
+// import 'package:componentes/src/pages/alert_page.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Home(),
+      title: 'Componentes APP',
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: getApplicationRoutes(),
+      onGenerateRoute: (RouteSettings settings) {
+        print('Ruta llamda: ${settings.name}');
+
+        // return MaterialPageRoute(
+        // builder: (BuildContext context) => AlertPage());
+      },
     );
   }
 }
