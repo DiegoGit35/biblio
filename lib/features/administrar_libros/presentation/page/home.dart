@@ -9,9 +9,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Componentes'),
+        title: const Text('Administrar Libros'),
       ),
-      body: _lista(),
+      body: Container(
+        // color: Colors.black87,
+        child: _lista(),
+      ),
     );
   }
 
@@ -33,7 +36,11 @@ class HomePage extends StatelessWidget {
 
     data?.forEach((opt) {
       final widgetTemp = ListTile(
-        title: Text(opt['texto']),
+        hoverColor: Colors.blue[50],
+        title: Text(
+          opt['texto'],
+          // style: TextStyle(color: Colors.white),
+        ),
         leading: getIcon(opt['icon']),
         trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
         onTap: () {
