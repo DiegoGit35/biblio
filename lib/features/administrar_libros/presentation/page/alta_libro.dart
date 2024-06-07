@@ -8,6 +8,10 @@ class AltaLibro extends StatefulWidget {
 }
 
 class _CreateFormularioLibro extends State<AltaLibro> {
+  List<String> editoriales = ["RBA", "Planeta", "Gredos"];
+
+  String? editorialSeleccionada = 'RBA';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,13 +82,31 @@ class _CreateFormularioLibro extends State<AltaLibro> {
     );
   }
 
-  Widget _editorialLibro() {
-    List listNames = ["RBA", "Planeta", "Gredos"];
+  List<DropdownMenuItem<String>> getEditoriales() {
+    List<DropdownMenuItem<String>> listaEditoriales = [];
 
-    return DropdownButtonFormField(items: listNames.map((name) {
-      return DropdownMenuItem(child: Text(name), value: name);
-    }), onChanged: (value) {
-      print(value);
-    });
+    for (var editorial in editoriales) {
+      // print(editorial);
+      listaEditoriales.add(DropdownMenuItem(
+        value: editorial,
+        child: Text(editorial),
+      ));
+    }
+    return listaEditoriales;
+  }
+
+  Widget _editorialLibro() {
+    return DropdownButtonFormField(
+        borderRadius: BorderRadius.circular(20),
+        decoration: InputDecoration(
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
+        value: editorialSeleccionada,
+        items: getEditoriales(),
+        onChanged: (value) {
+          setState(() {
+            editorialSeleccionada = value;
+          });
+        });
   }
 }
