@@ -4,7 +4,7 @@ import 'package:biblio/features/administrar_libros/presentation/page/home.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
-    '/': (BuildContext context) => HomePage(),
-    'altaLibro': (BuildContext context) => AltaLibro(),
+    '/': (BuildContext context) => const HomePage(),
+    'altaLibro': (BuildContext context) => const AltaLibro(),
   };
 }

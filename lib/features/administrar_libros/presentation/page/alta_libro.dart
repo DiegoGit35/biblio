@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:biblio/features/administrar_libros/data/repository/database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class AltaLibro extends StatefulWidget {
+  const AltaLibro({super.key});
+
   @override
   _CreateFormularioLibro createState() => _CreateFormularioLibro();
 }
@@ -96,6 +97,8 @@ class _CreateFormularioLibro extends State<AltaLibro> {
   }
 
   Widget _editorialLibro() {
+    editoriales = [];
+    editoriales = DBProvider.db.getEditoriales();
     return DropdownButtonFormField(
         borderRadius: BorderRadius.circular(20),
         decoration: InputDecoration(

@@ -5,6 +5,8 @@ import 'package:biblio/features/administrar_libros/presentation/provider/menu_pr
 import 'package:biblio/features/administrar_libros/presentation/utils/icono_string_util.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class HomePage extends StatelessWidget {
     // menuProvider.cargarData()
     return FutureBuilder(
       future: menuProvider.cargarData(),
-      initialData: [],
+      initialData: const [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
           children: _listaItems(snapshot.data, context),
