@@ -10,6 +10,11 @@
             "ruta" : "modificarLibro",
             "icon" : "",
             "texto" : "Modificar Libro"
+        },
+        {
+            "ruta" : "listarLibros",
+            "icon" : "",
+            "texto" : "Listar Libro"
         }
     ]
 }

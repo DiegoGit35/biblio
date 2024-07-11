@@ -1,4 +1,3 @@
-import 'package:biblio/features/administrar_libros/data/repository/database.dart';
 import 'package:flutter/material.dart';
 
 class AltaLibro extends StatefulWidget {
@@ -97,8 +96,8 @@ class _CreateFormularioLibro extends State<AltaLibro> {
   }
 
   Widget _editorialLibro() {
-    editoriales = [];
-    editoriales = DBProvider.db.getEditoriales();
+    // editoriales = [];
+    // editoriales = DBProvider.db.getEditoriales();
     return DropdownButtonFormField(
         borderRadius: BorderRadius.circular(20),
         decoration: InputDecoration(

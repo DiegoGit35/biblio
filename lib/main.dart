@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:biblio/features/administrar_libros/data/repository/database.dart';
+import 'package:biblio/features/administrar_libros/data/adapters/adaptador_biblioteca_sqlite.dart.dart';
+import 'package:biblio/features/administrar_libros/data/repository/repositorio_biblioteca.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -8,12 +9,14 @@ import 'package:biblio/config/routes/routes.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 // import 'package:componentes/src/pages/alert_page.dart';
 
+RepositorioBiblioteca repsoitorio = AdaptadorSQLite();
+
 void main() async {
   if (Platform.isWindows || Platform.isLinux) sqfliteFfiInit();
 
   databaseFactory = databaseFactoryFfi;
   WidgetsFlutterBinding.ensureInitialized();
-  DBProvider.db.database;
+  AdaptadorSQLite.db.database;
   runApp(const MyApp());
 }
 
