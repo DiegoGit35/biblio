@@ -11,10 +11,10 @@ abstract class RepositorioBiblioteca {
   void agregarUsuario(Usuario nuevoUsuario);
 
   // Método para obtener todos los libros
-  List<Libro> todosLosLibros();
+  Future<List<Libro>> todosLosLibros();
 
   // Método para obtener todos los usuarios
-  List<Usuario> todosLosUsuarios();
+  Future<List<Usuario>> todosLosUsuarios();
 
   // Método para agregar un movimiento
   void agregarMovimiento(MovimientoDeBiblioteca nuevoMovimiento);

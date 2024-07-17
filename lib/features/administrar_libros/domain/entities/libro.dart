@@ -1,13 +1,15 @@
 class Libro {
-  late String anio,
-      titulo,
+  late String titulo,
       editorial,
       estadoFisico,
       disponibilidad,
       fechaRegistro,
+      autoresanio,
+      isbn,
       autores,
-      isbn;
-  String? fechaBaja, idLibro;
+      anio,
+      idLibro;
+  String? fechaBaja;
 
   Libro(
       {required this.anio,
@@ -18,16 +20,20 @@ class Libro {
       required this.fechaRegistro,
       required this.autores,
       required this.isbn,
-      required fechaBaja});
+      required fechaBaja,
+      required idLibro});
 
-  factory Libro.fromSqfliteDatabase(Map<String, dynamic> map) => Libro(
-      anio: map['anio'] ?? '',
-      titulo: map['titulo'] ?? '',
-      editorial: map['editorial'] ?? '',
-      estadoFisico: map['estado_fisico'] ?? '',
-      disponibilidad: map['disponibilidad'] ?? '',
-      fechaRegistro: map['fecha_registro'] ?? '',
-      autores: map['autores'] ?? '',
-      isbn: map['isbn']?.toInt() ?? 0,
-      fechaBaja: map['fecha_baja']);
+  factory Libro.fromSqfliteDatabase(Map<String, dynamic> map) {
+    return Libro(
+        idLibro: map['id_ejemplar'].toString(),
+        anio: map['anio'].toString(),
+        titulo: map['titulo'] ?? '',
+        editorial: map['editorial'] ?? '',
+        estadoFisico: map['estado_fisico'] ?? '',
+        disponibilidad: map['disponibilidad'] ?? '',
+        fechaRegistro: map['fecha_registro'] ?? '',
+        autores: map['autores'] ?? '',
+        isbn: map['isbn'].toString(),
+        fechaBaja: map['fecha_baja'] ?? '');
+  }
 }

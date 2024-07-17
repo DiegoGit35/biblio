@@ -32,7 +32,7 @@ class AdaptadorSQLite implements RepositorioBiblioteca {
 
     final data = openDatabase(
       path,
-      version: 1,
+      version: 2,
     );
     return await data;
   }
@@ -59,18 +59,16 @@ class AdaptadorSQLite implements RepositorioBiblioteca {
   }
 
   @override
-  List<Libro> todosLosLibros() {
-//     final librosTodos = await _database!.rawQuery('''
-//       SELECT * FROM libro ORDER BY titulo;
-// ''');
-//     return librosTodos
-//         .map((libro) => Libro.fromSqfliteDatabase(libro))
-//         .toList();
+  Future<List<Libro>> todosLosLibros() async {
+    print('askaksksakasksasakkaks');
     final db = await database;
-    final libros = await db!.query('libro');
-    print('libros: ');
-    print(libros);
-    return libros.map((libro) => Libro.fromSqfliteDatabase(libro)).toList();
+    final List<Map<String, dynamic>> librosTodos = await db!.rawQuery('''
+      SELECT * FROM libro
+''');
+    print('nigg {$librosTodos}');
+    return librosTodos
+        .map((libro) => Libro.fromSqfliteDatabase(libro))
+        .toList();
   }
 
   @override
