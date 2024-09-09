@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "/home/diebo/Documents/Flutter/biblio/linux"
+    "cmake.sourceDirectory": "/home/diebo/Documents/Flutter/biblio/linux",
+    "editor.fontSize": 15,
+    "editor.minimap.sectionHeaderFontSize": 14,
+    "chat.editor.fontSize": 16,
+    "editor.fontLigatures": false
 }

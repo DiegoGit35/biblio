@@ -60,12 +60,10 @@ class AdaptadorSQLite implements RepositorioBiblioteca {
 
   @override
   Future<List<Libro>> todosLosLibros() async {
-    print('askaksksakasksasakkaks');
     final db = await database;
     final List<Map<String, dynamic>> librosTodos = await db!.rawQuery('''
       SELECT * FROM libro
 ''');
-    print('nigg {$librosTodos}');
     return librosTodos
         .map((libro) => Libro.fromSqfliteDatabase(libro))
         .toList();

@@ -4,10 +4,9 @@ class Libro {
       estadoFisico,
       disponibilidad,
       fechaRegistro,
-      autoresanio,
-      isbn,
       autores,
       anio,
+      isbn,
       idLibro;
   String? fechaBaja;
 
