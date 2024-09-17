@@ -8,7 +8,7 @@ import 'dart:async' as _i4;
 import 'package:biblio/core/error/failure.dart' as _i5;
 import 'package:biblio/features/administrar_libros/domain/entities/libro_entity.dart'
     as _i6;
-import 'package:biblio/features/administrar_libros/domain/repository/libros_repository.dart'
+import 'package:biblio/features/libros/domain/repository/libros_repository.dart'
     as _i3;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;

@@ -1,4 +1,4 @@
-import 'package:biblio/features/administrar_libros/domain/repository/libros_repository.dart';
+import 'package:biblio/features/libros/domain/repository/libros_repository.dart';
 import 'package:mockito/annotations.dart';
 
 @GenerateMocks(

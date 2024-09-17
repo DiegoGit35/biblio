@@ -1,13 +1,14 @@
-import 'package:biblio/features/administrar_libros/data/adapters/adaptador_biblioteca_sqlite.dart.dart';
-import 'package:biblio/features/administrar_libros/data/repository/repositorio_biblioteca.dart';
+import 'package:biblio/features/libros/data/adapters/adaptador_biblioteca_memoria.dart';
+import 'package:biblio/features/libros/data/repository/repositorio_biblioteca.dart';
 import 'package:flutter/material.dart';
 
-import 'package:biblio/features/administrar_libros/presentation/provider/menu_provider.dart';
+import 'package:biblio/features/libros/presentation/provider/menu_provider.dart';
 
-import 'package:biblio/features/administrar_libros/presentation/utils/icono_string_util.dart';
+import 'features/libros/presentation/utils/icono_string_util.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final RepositorioBiblioteca repo;
+  HomePage({required this.repo, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +17,12 @@ class HomePage extends StatelessWidget {
         title: const Text('Administrar Libros'),
       ),
       body: Container(
-        // color: Colors.black87,
-        child: _lista(),
+        child: _lista(context), // Pasa context aquí
       ),
     );
   }
 
-  Widget _lista() {
-    // menuProvider.cargarData()
+  Widget _lista(BuildContext context) {
     return FutureBuilder(
       future: menuProvider.cargarData(),
       initialData: const [],
@@ -41,26 +40,17 @@ class HomePage extends StatelessWidget {
     data?.forEach((opt) {
       final widgetTemp = ListTile(
         hoverColor: Colors.blue[50],
-        title: Text(
-          opt['texto'],
-          // style: TextStyle(color: Colors.white),
-        ),
+        title: Text(opt['texto']),
         leading: getIcon(opt['icon']),
         trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.blue),
         onTap: () {
-          Navigator.pushNamed(context, opt['ruta']);
-
-          // final route = MaterialPageRoute(
-          //   builder: ( context )=> AlertPage()
-          // );
-
-          // Navigator.push(context, route);
+          // Navega a la nueva página pasando el repo como argumento
+          Navigator.pushNamed(context, opt['ruta'], arguments: repo);
         },
       );
 
-      opciones
-        ..add(widgetTemp)
-        ..add(const Divider());
+      opciones.add(widgetTemp);
+      opciones.add(const Divider());
     });
 
     return opciones;

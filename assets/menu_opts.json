@@ -2,19 +2,45 @@
     "nombreApp" : "booker",
     "rutas" : [
         {
-            "ruta" : "altaLibro",
-            "icon" : "",
-            "texto" : "Alta Libro"
-        },
-        {
-            "ruta" : "modificarLibro",
-            "icon" : "",
-            "texto" : "Modificar Libro"
-        },
-        {
             "ruta" : "listarLibros",
             "icon" : "",
-            "texto" : "Listar Libro"
+            "texto" : "Todos los Libros"
+        },
+        {
+            "ruta" : "altaLibro",
+            "icon" : "",
+            "texto" : "Agregar un Libro"
+        },
+        {
+            "ruta" : "listarUsuarios",
+            "icon" : "",
+            "texto" : "Todos los Usuarios"
+
+        },
+        {
+            "ruta" : "altaUsuario",
+            "icon" : "",
+            "texto" : "Agregar un Usuario"
+        },
+        {
+            "ruta" : "altaRetiro",
+            "icon" : "",
+            "texto": "Retirar Libro"
+        },
+        {
+            "ruta" : "altaDevolucion",
+            "icon" : "",
+            "texto": "Hacer Devolución"
+        },
+        {
+            "ruta" : "listarNoDevueltos",
+            "icon" : "",
+            "texto": "Ver no devueltos"
+        },
+        {
+            "ruta" : "salir",
+            "icon" : "",
+            "texto": "Salir de la aplicación"
         }
     ]
 }

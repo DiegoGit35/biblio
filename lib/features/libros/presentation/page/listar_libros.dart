@@ -1,8 +1,10 @@
-import 'package:biblio/features/administrar_libros/data/adapters/adaptador_biblioteca_sqlite.dart.dart';
-import 'package:biblio/features/administrar_libros/data/repository/repositorio_biblioteca.dart';
-import 'package:biblio/features/administrar_libros/domain/entities/libro.dart';
+import 'package:biblio/features/libros/data/adapters/adaptador_biblioteca_memoria.dart';
+import 'package:biblio/features/libros/data/adapters/adaptador_biblioteca_sqlite.dart.dart';
+import 'package:biblio/features/libros/data/repository/repositorio_biblioteca.dart';
+import 'package:biblio/features/libros/domain/entities/libro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
 class ListarLibros extends StatefulWidget {
   const ListarLibros({super.key});
@@ -11,17 +13,20 @@ class ListarLibros extends StatefulWidget {
 }
 
 class ListarLibrosState extends State<ListarLibros> {
-  RepositorioBiblioteca repo = AdaptadorSQLite();
+  // RepositorioBiblioteca repo = AdaptadorSQLite();
+  // RepositorioBiblioteca repo = AdaptadorBibliotecaMemoria();
 
   @override
   Widget build(BuildContext context) {
+    final repo = Provider.of<RepositorioBiblioteca>(context, listen: false);
     return Scaffold(
         appBar: AppBar(
           title: const Text("Todos los libros"),
         ),
         body: Column(
           children: [
-            FutureBuilder<List<Libro>>(
+            Expanded(
+              child: FutureBuilder<List<Libro>>(
                 future: repo.todosLosLibros(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -29,7 +34,8 @@ class ListarLibrosState extends State<ListarLibros> {
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return Center(child: Text('No books available'));
+                    return const Center(
+                        child: Text('No hay libros disponibles'));
                   } else {
                     return ListView.builder(
                       scrollDirection: Axis.vertical,
@@ -39,16 +45,18 @@ class ListarLibrosState extends State<ListarLibros> {
                         final book = snapshot.data![index];
                         return Card(
                           child: ListTile(
-                            title: Text(book.titulo),
-                            subtitle: Text(book.autores),
+                            title: Text(book.nombre!),
+                            subtitle: Text(book.isbn!),
                             isThreeLine: true,
-                            trailing: Text(book.disponibilidad),
+                            trailing: Text(book.anioPublicacion!),
                           ),
                         );
                       },
                     );
                   }
-                })
+                },
+              ),
+            )
           ],
         ));
   }

@@ -1,4 +1,4 @@
-import 'package:biblio/features/administrar_libros/domain/entities/editorial.dart';
+import 'package:biblio/features/libros/domain/entities/editorial.dart';
 import 'package:flutter/material.dart';
 
 class EditorialDropdown extends StatelessWidget {

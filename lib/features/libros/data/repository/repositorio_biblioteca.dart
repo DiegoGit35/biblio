@@ -1,7 +1,7 @@
 // Definición de la clase abstracta RepositorioBiblioteca
-import 'package:biblio/features/administrar_libros/domain/entities/libro.dart';
-import 'package:biblio/features/administrar_libros/domain/entities/movimientosDeBiblioteca.dart';
-import 'package:biblio/features/administrar_libros/domain/entities/usuario.dart';
+import 'package:biblio/features/libros/domain/entities/libro.dart';
+import 'package:biblio/features/libros/domain/entities/movimientosDeBiblioteca.dart';
+import 'package:biblio/features/libros/domain/entities/usuario.dart';
 
 abstract class RepositorioBiblioteca {
   // Método para agregar un libro
@@ -20,5 +20,13 @@ abstract class RepositorioBiblioteca {
   void agregarMovimiento(MovimientoDeBiblioteca nuevoMovimiento);
 
   // Método para obtener todos los libros no devueltos
-  List<Libro> todosLosLibrosNoDevueltos();
+  Future<List<Libro>> todosLosLibrosNoDevueltos();
+
+  Future<List<MovimientoDeBiblioteca>> todosLosMovimientos();
+
+  Future<List<Libro>> librosDisponibles();
+
+  void devolver(MovimientoDeBiblioteca movimiento) {}
+
+  Future<List<MovimientoDeBiblioteca>>? movimientosPrestamos() {}
 }
